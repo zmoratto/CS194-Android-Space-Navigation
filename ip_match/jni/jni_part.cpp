@@ -46,7 +46,7 @@ extern "C" {
     //cv::drawKeypoints(*pMatGr, kp2, out_canvas, cv::Scalar::all(-1), cv::DrawMatchesFlags::DEFAULT);
 
     if (initd) {
-      cv::BruteForceMatcher<cv::HammingLUT > matcher;
+      cv::BFMatcher matcher(cv::NORM_HAMMING);
       vector<cv::DMatch> matches;
       matcher.match(prev_desc, desc, matches);
 

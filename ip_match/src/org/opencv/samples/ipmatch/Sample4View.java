@@ -21,7 +21,7 @@ class Sample4View extends SampleViewBase {
     }
 
     @Override
-    public void surfaceChanged(SurfaceHolder _holder, int format, int width, int height) {
+        public void surfaceChanged(SurfaceHolder _holder, int format, int width, int height) {
         super.surfaceChanged(_holder, format, width, height);
 
         synchronized (this) {
@@ -35,7 +35,7 @@ class Sample4View extends SampleViewBase {
     }
 
     @Override
-    protected Bitmap processFrame(byte[] data) {
+        protected Bitmap processFrame(byte[] data) {
         mYuv.put(0, 0, data);
 
         switch (Sample4Mixed.viewMode) {
@@ -60,24 +60,21 @@ class Sample4View extends SampleViewBase {
         }
 
         Log.i("SAMPLE4VIEW", ":)");
-        
+
         Bitmap bmp = Bitmap.createBitmap(getFrameWidth(), getFrameHeight(), Bitmap.Config.ARGB_8888);
-//        Bitmap bmp = Bitmap.createBitmap(mRgba.cols(), mRgba.rows(), mRgba.type()); Bitmap.Config.ARGB_8888);
-        
-//        Imgproc.cvtColor(mRgba, mRgba, Imgproc.COLOR_);
-//        bmp = Bitmap.createBitmap(result.cols(), result.rows(), Bitmap.Config.ARGB_8888);
-//        Utils.matToBitmap(result, bmp);
-//        mImageView.setImageBitmap(bmp);
+        //        Bitmap bmp = Bitmap.createBitmap(mRgba.cols(), mRgba.rows(), mRgba.type()); Bitmap.Config.ARGB_8888);
 
-        if (Utils.matToBitmap(mRgba, bmp))
-            return bmp;
+        //        Imgproc.cvtColor(mRgba, mRgba, Imgproc.COLOR_);
+        //        bmp = Bitmap.createBitmap(result.cols(), result.rows(), Bitmap.Config.ARGB_8888);
+        //        Utils.matToBitmap(result, bmp);
+        //        mImageView.setImageBitmap(bmp);
 
-        bmp.recycle();
-        return null;
+        Utils.matToBitmap(mRgba, bmp);
+        return bmp;
     }
 
     @Override
-    public void run() {
+        public void run() {
         super.run();
 
         synchronized (this) {
